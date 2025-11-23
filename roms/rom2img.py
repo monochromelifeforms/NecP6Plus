@@ -13,7 +13,7 @@ with open(sys.argv[1], 'rb') as ris:
 offset = 0 if len(sys.argv) < 3 else int(sys.argv[2])
 rom = rom[offset:]
 
-imageWidth = math.ceil(math.sqrt(len(rom)*8))
+imageWidth = 1024 # math.ceil(math.sqrt(len(rom)*8))
 imageHeight = len(rom)*8 // imageWidth + 24
 
 pngName = os.path.splitext(sys.argv[1])[0] + f"_{offset}.png"
@@ -37,4 +37,4 @@ for byte in rom:
 img = Image.frombytes("L", (imageWidth, imageHeight), bytes(bits))
 img.save(pngName)
 
-print("\nDone.")
+print("Done.")
