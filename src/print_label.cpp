@@ -1,7 +1,9 @@
 #include <vector>
 #include <iostream>
+#include <string>
 
-enum class TypeFace_t {
+// Can't use enum class because we need to do bitwise operations.
+typedef enum {
     CPI10 = 0,
     CPI12 = 1,
     Proportional = 2,
@@ -11,7 +13,7 @@ enum class TypeFace_t {
     Wide = 32,
     Italic = 64,
     Underline = 128
-};
+} TypeFace_t;
 
 class CControlCode 
 {
@@ -50,11 +52,17 @@ int main(int argc, char* argv[])
 {
     try
     {
-        for (unsigned i = 0; i < 256; ++i)
+        std::string text{"Hello, World!"};
+        CCcTypeFace typeFace(CPI10 | Bold | Underline);
+        std::vector<char> bitstream;
+        typeFace.Serialize(bitstream);
+        bitstream.insert(bitstream.end(), text.begin(), text.end());
+
+        for (char c : bitstream)
         {
-            std::cout << static_cast<char>(27) << static_cast<char>(33) << static_cast<char>(i) << "Hello World with TypeFace " << i << "\n";
+            std::cout << c;
         }
-        std::cout << std::flush;
+        std::cout << std::endl;
     }
     catch (std::exception& e)
     {
