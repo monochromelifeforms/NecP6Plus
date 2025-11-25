@@ -78,11 +78,11 @@ namespace p6
     const CControlCode fixed(27, 112, 0); // ESC p 0
     const CControlCode wide(27, 87, 1); // ESC W 1
     const CControlCode unwide(27, 87, 0); // ESC W 0
-    const CControlCode doublewide(27, 69, 1); // ESC E 1 -- How does this differ from wide?
-    const CControlCode tripplewide(27, 69, 2); // ESC E 2
-    const CControlCode normalwidth(27, 69, 0); // ESC E 0
-    const CControlCode doublehigh(27, 86, 1); // ESC V 1
-    const CControlCode normalheight(27, 86, 0); // ESC V 0
+    const CControlCode doublewide(28, 69, 1); // ESC E 1 -- How does this differ from wide?
+    const CControlCode tripplewide(28, 69, 2); // ESC E 2
+    const CControlCode normalwidth(28, 69, 0); // ESC E 0
+    const CControlCode doublehigh(28, 86, 1); // ESC V 1
+    const CControlCode normalheight(28, 86, 0); // ESC V 0
     const CControlCode narrow(27, 15); // ESC SI
     const CControlCode shadow(27, 69); // ESC E
     const CControlCode unshadow(27, 70); // ESC F
