@@ -23,8 +23,15 @@ Prusa MK3 in resolving the lettering. A bold font alternative was added for this
 
 The paper support is printed face-down, the sliders on its "side."
 
-In PrusaSlicer as well as AnycubicSlicerNext, I've used the 0.2mm "quality" preset. Supports were only painted on the little
+In PrusaSlicer as well as AnycubicSlicerNext, I've used the 0.2mm "quality" preset.
+
+Supports were only painted on the little
 nubs that make up the hinge mechanism. For this part, normal supports are prefereable over tree supports. They come off very easily.
+
+Remove any brim that the slicer adds. It's not needed.
+
+When I printed it on my Anycubic, I throttled the speed down to Prusa speeds, to give the printer a chance to lay down the text
+in the best way possible.
 
 ## Filament Choice
 
