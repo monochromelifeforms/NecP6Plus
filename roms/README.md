@@ -1,6 +1,6 @@
 # ROMs
 
-There are two 64kB ROMs, split into even (18?) and odd (18?), for a total of 128k.
+There are two 64kB ROMs, split into odd (183) and even (182), for a total of 128k.
 
 The ROMs themselves are not in this repo. I figure if you're here, you have the printer yourself and can dump the ROMs yourself.
 
