@@ -8,6 +8,9 @@ The ROMs themselves are not in this repo. I figure if you're here, you have the 
 
 Since there are two ROMs, and I did not have a ROM merging tool at hand, I quickly wrote one myself (`merge.cpp`).
 
+There are two 64kB ROMs, split into odd (183) and even (182) bytes. This was experimentally determined by
+running the Linux command 'strings' over each ROM, and combined, trying both orders.
+
 The `rom2img.py` python script exports the ROM into a PNG image file, interpreting each bit as either black or white, depending on its value, grouped in bytes of three (for the 24 pins).
 I was hoping that I copuld "see" where the fonts may be located, but without luck so far.
 
