@@ -1,3 +1,5 @@
 *.o
 print_label
+merge
 *.rom
+
