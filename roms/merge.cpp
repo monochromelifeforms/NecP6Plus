@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <exception>
+#include <cassert>
 
 int main(int argc, char** argv)
 {
@@ -11,24 +12,34 @@ int main(int argc, char** argv)
     {
         if (argc < 4)
         {
-	    std::cerr << "Usage: " << argv[0] << " file1 file2 outfile" << std::endl;
-	    return 3;
+            std::cerr << "Usage: " << argv[0] << " file1 file2 outfile" << std::endl;
+            return 3;
         }
 
-        char c;
+        char c1, c2;
         std::ifstream file1(argv[1]);
         std::ifstream file2(argv[2]);
         std::ofstream outfile(argv[3]);
-        while (!file1.eof())
+        while (true)
         {
-	    if (file2.eof())
-	    {
-		throw std::runtime_error("Input files do not have the same size.");
-	    }
-	    file1.read(&c, 1);
-            outfile.write(&c, 1);
-	    file2.read(&c, 1);
-	    outfile.write(&c, 1);
+            file1.read(&c1, 1);
+            file2.read(&c2, 1);
+            if (file1.eof())
+            {
+                if (file2.eof())
+                {
+                    break;
+                }
+                throw std::runtime_error("file1 is shorter than file2.");
+            }
+            if (file2.eof())
+            {
+                assert(!file1.eof());
+                throw std::runtime_error("file1 is longer than file2.");
+            }
+
+            outfile.write(&c1, 1);
+            outfile.write(&c2, 1);
         }
         file1.close();
         file2.close();
@@ -36,14 +47,13 @@ int main(int argc, char** argv)
     }
     catch (std::exception& e)
     {
-	std::cerr << e.what() << std::endl;
-	return 1;
+        std::cerr << "ERROR: " << e.what() << std::endl;
+        return 1;
     }
     catch (...)
     {
-	std::cerr << "Caught unknown exception." << std::endl;
-	return 2;
+        std::cerr << "ERROR: Caught unknown exception." << std::endl;
+        return 2;
     }
-
     return 0;
 }
